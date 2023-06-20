@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -26,7 +26,11 @@ export const ButtonsContainer = styled.div`
   gap: 12px;
 `;
 
-export const Button = styled.a`
+interface ButtonProps{
+  variant: "purple" | "yellow"
+}
+
+export const Button = styled.a<ButtonProps>`
   padding: 8px;
   border-radius: 6px;
   gap:4px;
@@ -38,14 +42,18 @@ export const Button = styled.a`
     opacity: 0.8;
     cursor: pointer;
   }
-`;
 
-export const ButtonLocation = styled(Button)`
-  background: ${props=> props.theme['purple-light']};
-  color: ${props=> props.theme['purple-dark']};
-`;
-
-export const ButtonShoppingCart = styled(Button)`
-  background: ${props=> props.theme['yellow-light']};
-  color: ${props=> props.theme['yellow-dark']};
+  ${(props) => {
+    if (props.variant === "purple"){
+    return css`
+    background: ${props=> props.theme['purple-light']};
+    color: ${props=> props.theme['purple-dark']};`
+    }
+    if (props.variant === "yellow"){
+      return css`
+      background: ${props=> props.theme['yellow-light']};
+      color: ${props=> props.theme['yellow-dark']};`
+    }
+  }
+ } 
 `;
