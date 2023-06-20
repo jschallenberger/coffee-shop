@@ -1,11 +1,12 @@
 import { styled } from "styled-components";
-
+import background from "../../assets/background.svg"
 export const SummaryContainer = styled.section`
   width: 100%;
   padding: 5rem 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('${background}');
 `;
 
 export const SummaryContent = styled.div`
