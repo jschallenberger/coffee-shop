@@ -7,6 +7,7 @@ export const SummaryContainer = styled.section`
   align-items: center;
   justify-content: center;
   background-image: url('${background}');
+  box-shadow: 0 0 8px 8px #FAFAFA inset;
 `;
 
 export const SummaryContent = styled.div`
@@ -18,13 +19,6 @@ export const SummaryContent = styled.div`
   justify-content: center;
 
   flex-direction: row;
-
-  h1{
-    color: ${props => props.theme["base-title"]};
-    font-size: 3.3rem;
-    line-height: 4rem;
-    font-family: "Baloo 2";
-  }
 
   span{
     display: block;

@@ -1,3 +1,4 @@
+import { CoffeeList } from "../../components/CoffeeList";
 import { Header } from "../../components/Header";
 import { Summary } from "../../components/Summary";
 
@@ -6,6 +7,7 @@ export function CoffeeMarket(){
     <div>
       <Header/>
       <Summary/>
+      <CoffeeList/>
     </div>
   )
 }
