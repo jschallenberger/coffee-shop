@@ -2,21 +2,23 @@ import { styled } from "styled-components";
 
 export const CoffeeListContainer = styled.main`
   width: 100%;
-  display: flex;
   margin-top: 2rem;
+
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
 `;  
 
 export const CoffeeListContent = styled.div`
   width: 100%;
   max-width: 1120px;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  flex-direction: column;
+  margin-top: 2rem;
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
 `;
 
 export const CoffeeCard = styled.div`
@@ -44,7 +46,9 @@ export const CoffeeCard = styled.div`
   }
 
   p{
+    text-align: center;
     font-size: 0.9rem;
+    line-height: 130%;
     color: ${props=> props.theme["base-label"]};
   }
 `;
@@ -58,7 +62,7 @@ export const CoffeeCategory = styled.span`
   color: ${props => props.theme["yellow-dark"]};
   margin-left: 4px;
 
-  &:first-child{
+  &:first-child {
     margin-left: 0;
   }
 `;
