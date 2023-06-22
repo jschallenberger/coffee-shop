@@ -8,13 +8,13 @@ export const CoffeeListContainer = styled.main`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 `;  
 
 export const CoffeeListContent = styled.div`
   width: 100%;
   max-width: 1120px;
   margin-top: 2rem;
+  padding-bottom: 2rem;
   
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -65,7 +65,7 @@ export const CoffeeCategory = styled.span`
   &:first-child {
     margin-left: 0;
   }
-  `;
+`;
 
 export const Buy = styled.div`
   display: flex;
@@ -118,6 +118,10 @@ export const BuyInput = styled.div`
   a{
     text-decoration: none;
     color: ${props => props.theme["purple"]};
+    
+    &:hover{
+      cursor: pointer;
+    }
   }
 `;
 
