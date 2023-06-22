@@ -22,7 +22,7 @@ export const CoffeeListContent = styled.div`
 `;
 
 export const CoffeeCard = styled.div`
-  max-width: 256px;
+  width: 256px;
   height: 310px;
 
   display: flex;
@@ -65,4 +65,66 @@ export const CoffeeCategory = styled.span`
   &:first-child {
     margin-left: 0;
   }
+  `;
+
+export const Buy = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 24px;
+`;
+
+export const BuyButton = styled.a`
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: ${props=> props.theme['purple-dark']};
+  color: ${props=> props.theme['white']};
+
+  &:hover{
+    opacity: 0.8;
+    cursor: pointer;
+  }
+`;
+
+export const BuyPrice = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${props => props.theme["base-text"]};
+
+  strong{
+    font-weight: extrabold;
+    font-size: 24px;
+    font-family: "Baloo 2";
+  }
+`;
+
+export const BuyInput = styled.div`
+  width: 72px;
+  height: 38px;
+  background: ${props => props.theme["base-button"]};
+
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  a{
+    text-decoration: none;
+    color: ${props => props.theme["purple"]};
+  }
+`;
+
+export const BuyActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
 `;
