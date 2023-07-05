@@ -1,5 +1,4 @@
 import { CoffeeCard, CoffeeListContent, CoffeeListContainer, CoffeeCategory, BuyButton, Buy, BuyPrice, BuyInput, BuyActions, BuyActionsButton } from "./styles";
-import expresso from '../../assets/coffees/expresso.png'
 import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
