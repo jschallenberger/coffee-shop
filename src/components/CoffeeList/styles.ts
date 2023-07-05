@@ -18,7 +18,7 @@ export const CoffeeListContent = styled.div`
   
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 40px;
 `;
 
 export const CoffeeCard = styled.div`
@@ -42,7 +42,7 @@ export const CoffeeCard = styled.div`
 
   img{
     position:relative;
-    margin-top: -50px;
+    margin-top: -30px;
   }
 
   p{
@@ -89,6 +89,10 @@ export const BuyButton = styled.a`
     opacity: 0.8;
     cursor: pointer;
   }
+  
+  svg{
+    line-height: 0;
+  }
 `;
 
 export const BuyPrice = styled.p`
@@ -104,26 +108,7 @@ export const BuyPrice = styled.p`
   }
 `;
 
-export const BuyInput = styled.div`
-  width: 72px;
-  height: 38px;
-  background: ${props => props.theme["base-button"]};
 
-  border-radius: 6px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  a{
-    text-decoration: none;
-    color: ${props => props.theme["purple"]};
-    
-    &:hover{
-      cursor: pointer;
-    }
-  }
-`;
 
 export const BuyActions = styled.div`
   display: flex;
@@ -131,4 +116,32 @@ export const BuyActions = styled.div`
   justify-content: center;
   flex-direction: row;
   gap: 8px;
-`;
+  `;
+
+export const BuyActionsButton = styled.button`
+    text-decoration: none;
+    background-color: inherit;
+    outline: none;
+    line-height: 0;
+    border: 0;
+    color: ${props => props.theme["purple"]};
+    
+    &:hover{
+      cursor: pointer;
+    }
+    &:focus{
+      box-shadow: 0 0 0 0;
+    }
+  `;
+
+export const BuyInput = styled.div`
+    width: 72px;
+    height: 38px;
+    background: ${props => props.theme["base-button"]};
+  
+    border-radius: 6px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  `;

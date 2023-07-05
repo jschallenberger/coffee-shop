@@ -1,8 +1,31 @@
-import { CoffeeCard, CoffeeListContent, CoffeeListContainer, CoffeeCategory, BuyButton, Buy, BuyPrice, BuyInput, BuyActions } from "./styles";
+import { CoffeeCard, CoffeeListContent, CoffeeListContainer, CoffeeCategory, BuyButton, Buy, BuyPrice, BuyInput, BuyActions, BuyActionsButton } from "./styles";
 import expresso from '../../assets/coffees/expresso.png'
 import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
+
+ const baseAPIURL = 'https://jschallenberger.github.io';
 
 export function CoffeeList(){
+  interface Coffee{
+    coffeeName: string;
+    coffeeDescription: string;
+    imageUrl: string;
+    categories:string[];
+    price: number;
+  }
+  const [coffeeList, setCoffeeList] = useState<Coffee[]>([]);
+
+  async function loadCoffeeList(){
+    const response = await fetch(baseAPIURL + '/coffees.json');
+    const data = await response.json();
+
+    setCoffeeList(data);
+  }
+
+  useEffect(()=>{
+    loadCoffeeList();
+  },[])
+
   return (
     <CoffeeListContainer>
 
@@ -10,262 +33,48 @@ export function CoffeeList(){
 
       <CoffeeListContent>
 
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
+        {
+          coffeeList.map(coffee=>{
+            return (
+              <CoffeeCard key={coffee.coffeeName}>
+                 
+                <img width={120} height={120} src={baseAPIURL + coffee.imageUrl} alt="" />
 
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
+                <div>
+                {coffee.categories.map(coffeeCategory=>{
+                  return <CoffeeCategory key={coffeeCategory}>{coffeeCategory}</CoffeeCategory>})
+                }
+                </div>
 
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
+                <h3>{coffee.coffeeName}</h3>
+                <p>{coffee.coffeeDescription}</p>
 
-        </CoffeeCard>
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
+                <Buy>
+                  <BuyPrice>R$&nbsp;
+                    <strong>
+                      {Intl.NumberFormat('pt-BR',{minimumSignificantDigits: 3}).format(coffee.price)}
+                    </strong>
+                  </BuyPrice>
+                  <BuyActions>
+                    <BuyInput>
+                      <BuyActionsButton>
+                        <Minus weight="bold"/>
+                      </BuyActionsButton>
+                      <span>0</span>
+                      <BuyActionsButton>
+                        <Plus weight="bold"/>
+                      </BuyActionsButton>
+                    </BuyInput>
+                    <BuyButton>
+                      <ShoppingCart size={ '22px' } weight="fill"/>
+                    </BuyButton>
+                  </BuyActions>
+                </Buy>
 
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
-
-        </CoffeeCard>
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
-
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
-
-        </CoffeeCard>
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
-
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
-
-        </CoffeeCard>
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
-
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
-
-        </CoffeeCard>
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
-
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
-
-        </CoffeeCard>
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
-
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
-
-        </CoffeeCard>
-        <CoffeeCard>
-          <img width={120} height={120} src={expresso} alt="" />
-          
-          <div>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-            <CoffeeCategory>Tradicional</CoffeeCategory>
-          </div>
-
-          <h3>Expresso Tradicional</h3>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <Buy>
-            <BuyPrice>R$&nbsp;
-              <strong>9,90</strong>
-            </BuyPrice>
-            <BuyActions>
-              <BuyInput>
-                <a href="">
-                  <Minus weight="bold"/>
-                </a>
-                <span>0</span>
-                <a href="">
-                  <Plus weight="bold"/>
-                </a>
-              </BuyInput>
-              <BuyButton>
-                <ShoppingCart size={ '22px' } weight="fill"/>
-              </BuyButton>
-            </BuyActions>
-          </Buy>
-
-        </CoffeeCard>
+              </CoffeeCard>
+            )
+          })
+        }
 
       </CoffeeListContent>
     </CoffeeListContainer>
